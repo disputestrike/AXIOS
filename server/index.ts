@@ -22,6 +22,21 @@ console.log('║' + '  🚀 AOIX-1 TRADING SYSTEM'.padEnd(78) + '║')
 console.log('║' + ' '.repeat(78) + '║')
 console.log('═'.repeat(80) + '\n')
 
+// Root route
+app.get('/', (req, res) => {
+  res.json({
+    system: 'AOIX-1 Trading System',
+    status: 'ready',
+    mode,
+    version: '1.1.0',
+    endpoints: {
+      root: '/',
+      health: '/health',
+      status: '/api/status'
+    }
+  })
+})
+
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', mode, timestamp: new Date().toISOString() })
