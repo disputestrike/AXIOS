@@ -1,0 +1,100 @@
+// railway.json - Railway Platform Deployment Configuration
+
+{
+  "name": "AOIX-1 Trading System",
+  "description": "Institutional-grade autonomous trading system with PostgreSQL",
+  "version": "2.0.0",
+  "environments": {
+    "development": {
+      "database": "postgresql",
+      "postgres": {
+        "version": "14",
+        "replicas": 0
+      },
+      "node": {
+        "runtime": "node:22"
+      }
+    },
+    "production": {
+      "database": "postgresql",
+      "postgres": {
+        "version": "14",
+        "replicas": 1,
+        "backup": true,
+        "backup_retention_days": 30
+      },
+      "node": {
+        "runtime": "node:22",
+        "memory": "4Gi",
+        "cpu": "2000m"
+      }
+    }
+  },
+  "services": {
+    "web": {
+      "builder": "nixpacks",
+      "startCommand": "pnpm start",
+      "healthcheck": {
+        "path": "/api/health",
+        "port": 5000,
+        "interval": 30,
+        "timeout": 10
+      },
+      "scale": {
+        "min": 1,
+        "max": 5
+      },
+      "environment": {
+        "NODE_ENV": "production",
+        "ENABLE_LIVE_TRADING": true,
+        "DATABASE_TYPE": "postgresql"
+      }
+    },
+    "database": {
+      "type": "postgresql",
+      "version": "14",
+      "storage": "20Gi",
+      "backups": {
+        "enabled": true,
+        "retention_days": 30
+      }
+    }
+  },
+  "volumes": {
+    "logs": {
+      "mount_path": "/app/logs",
+      "size": "10Gi"
+    },
+    "backups": {
+      "mount_path": "/app/backups",
+      "size": "50Gi"
+    }
+  },
+  "variables": {
+    "APP_NAME": "AOIX-1",
+    "LOG_LEVEL": "info",
+    "MAX_CONNECTIONS": 20,
+    "CONNECTION_TIMEOUT": 30000,
+    "POOL_SIZE": 10,
+    "POOL_IDLE_TIMEOUT": 60000,
+    "QUERY_TIMEOUT": 30000,
+    "MAX_DAILY_LOSS_PERCENT": 5,
+    "MAX_POSITION_SIZE_PERCENT": 5,
+    "MAX_TRADES_PER_DAY": 50,
+    "ENABLE_MONITORING": true,
+    "MONITORING_INTERVAL_MS": 60000
+  },
+  "plugins": {
+    "postgresql": {
+      "enabled": true,
+      "auto_schema_migration": true,
+      "backup_schedule": "0 2 * * *"
+    }
+  },
+  "monitoring": {
+    "metrics": true,
+    "logs": true,
+    "traces": true,
+    "health_checks": true
+  }
+}
