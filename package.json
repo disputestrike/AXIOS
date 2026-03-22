@@ -4,8 +4,8 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-    "dev": "tsx watch server/_core/index.ts",
-    "start": "tsx server/_core/index.ts",
+    "dev": "tsx watch server/index.ts",
+    "start": "tsx server/index.ts",
     "check": "tsc --noEmit",
     "test": "vitest run",
     "build": "tsc --skipLibCheck && node -e \"console.log('✓ Build complete')\"",
