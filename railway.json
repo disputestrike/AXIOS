@@ -1,5 +1,3 @@
-// railway.json - Railway Platform Deployment Configuration
-
 {
   "name": "AOIX-1 Trading System",
   "description": "Institutional-grade autonomous trading system with PostgreSQL",
@@ -33,7 +31,7 @@
   "services": {
     "web": {
       "builder": "nixpacks",
-      "startCommand": "pnpm start",
+      "startCommand": "npm start",
       "healthcheck": {
         "path": "/api/health",
         "port": 5000,
@@ -46,7 +44,7 @@
       },
       "environment": {
         "NODE_ENV": "production",
-        "ENABLE_LIVE_TRADING": true,
+        "ENABLE_LIVE_TRADING": false,
         "DATABASE_TYPE": "postgresql"
       }
     },
