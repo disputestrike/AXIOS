@@ -1,0 +1,17 @@
+node_modules/
+.npm/
+.npm-global/
+.cache/
+.env.local
+.env
+logs/
+dist/
+build/
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+package-lock.json
+pnpm-lock.yaml
