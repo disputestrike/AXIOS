@@ -22,7 +22,7 @@ interface ExecutionMetrics {
 interface OrderState {
   orderId: string
   symbol: string
-  strike: number
+  strike?: number
   quantity: number
   initialPrice: number
   retryCount: number

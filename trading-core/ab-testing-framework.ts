@@ -48,7 +48,7 @@ function generateMockTrades(
   slippage: number
   timeHeld: number
 }> {
-  const trades = []
+  const trades: Array<{ entryPrice: number; exitPrice: number; pnl: number; slippage: number; timeHeld: number }> = []
 
   for (let i = 0; i < count; i++) {
     let entryPrice = 100 + (Math.random() - 0.5) * 20

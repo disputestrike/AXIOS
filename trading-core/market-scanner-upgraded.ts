@@ -107,13 +107,14 @@ async function scanSymbol(
         return null
       }
 
-      return {
+      const scanResult = {
+        ...optionData,
         symbol,
         strike,
-        ...optionData,
         entryPrice: optionData.bid,
         currentPrice: optionData.bid,
       }
+      return scanResult
     } catch (error) {
       console.error(`Error scanning ${symbol} ${strike}:`, error)
       return null
@@ -123,7 +124,7 @@ async function scanSymbol(
   // Wait for all requests to complete
   const results = await Promise.all(scanPromises)
 
-  return results.filter((r) => r !== null) as Trade[]
+  return results.filter((r) => r !== null) as unknown as Trade[]
 }
 
 /**

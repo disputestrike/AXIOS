@@ -241,7 +241,13 @@ export class EnhancedUnifiedEngine {
       mlScoreThreshold: scaleConfig?.tradeQualityThreshold || 0.60,
       maxOpenPositions: scaleConfig?.maxOpenPositions || 4,
       allowedProducts: [ProductType.SPX_OPTIONS],
-      productAllocation: {}
+      productAllocation: {
+        [ProductType.SPX_OPTIONS]: 1.0,
+        [ProductType.SPY_SPREADS]: 0,
+        [ProductType.TLT_BONDS]: 0,
+        [ProductType.MICRO_FUTURES]: 0,
+        [ProductType.STRADDLES]: 0
+      }
     }
   }
 

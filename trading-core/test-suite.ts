@@ -217,7 +217,7 @@ function testMomentumGlide(): TestResult[] {
       const currentIv = 0.19 // 24% drop
       const ivChangePercent = ((currentIv - entryIv) / entryIv) * 100
 
-      let exitSignal = null
+      let exitSignal: string | null = null
       if (ivChangePercent < -20) {
         exitSignal = 'IV_CRUSH_EXIT'
       }

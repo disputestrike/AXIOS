@@ -9,18 +9,7 @@
  */
 
 import { analyzePerformance } from './performance-engine'
-
-interface BacktestResult {
-  totalTrades: number
-  wins: number
-  losses: number
-  winRate: number
-  totalPnL: number
-  maxDrawdown: number
-  sharpe: number
-  profitFactor: number
-  equity: number[]
-}
+import { BacktestResult } from './types'
 
 interface HistoricalSnapshot {
   timestamp: number
@@ -134,7 +123,7 @@ export async function walkForwardValidation(
 ) {
   console.log('[BACKTEST] Running walk-forward validation...')
 
-  let results = []
+  let results: BacktestResult[] = []
 
   for (let i = 0; i < historicalData.length - trainPeriod - testPeriod; i += testPeriod) {
     const trainData = historicalData.slice(i, i + trainPeriod)
@@ -170,7 +159,7 @@ export function monteCarlo(trades: any[], iterations: number = 1000) {
   console.log('[BACKTEST] Running Monte Carlo simulation...')
 
   const pnls = trades.map(t => t.pnl)
-  const results = []
+  const results: number[] = []
 
   for (let i = 0; i < iterations; i++) {
     let equity = 100000

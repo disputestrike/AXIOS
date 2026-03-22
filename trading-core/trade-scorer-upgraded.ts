@@ -153,7 +153,8 @@ export function scoreTrade(trade: Trade, vixLevel: number = 20): ScoredTrade {
       score: 0,
       passesFilters: false,
       confidence: 0,
-    }
+      recommendation: 'SELL' as const,
+    } as ScoredTrade
   }
 
   // Get volatility-adjusted weights
@@ -187,8 +188,8 @@ export function scoreTrade(trade: Trade, vixLevel: number = 20): ScoredTrade {
     score: Math.round(score),
     passesFilters: true,
     confidence: calculateConfidence(trade),
-    weights: weights,
-  }
+    recommendation: score > 70 ? 'BUY' : 'HOLD',
+  } as ScoredTrade
 }
 
 /**
