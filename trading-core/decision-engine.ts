@@ -13,7 +13,6 @@ import { smartExecute } from './execution'
 import { updateModel } from './learning-engine'
 import { logTrade } from './trade-logger'
 import { updateRisk, checkKillSwitch } from './risk-engine'
-import { ExecutionResult } from './types'
 
 interface DecisionContext {
   scanner: any
@@ -72,7 +71,7 @@ export async function runDecisionEngine(ctx: DecisionContext) {
 
     // STEP 6: EXECUTE trades
     console.log('[DECISION] Executing trades...')
-    const results: ExecutionResult[] = []
+    const results = []
 
     for (const trade of allocated) {
       try {
