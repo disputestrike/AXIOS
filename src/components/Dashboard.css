@@ -1,0 +1,467 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0d1b3e;
+  color: #ffffff;
+}
+
+.dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d1b3e 0%, #1a2540 100%);
+}
+
+/* Header */
+.header {
+  background: linear-gradient(90deg, #0052ff 0%, #0d1b3e 100%);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #0052ff;
+  box-shadow: 0 4px 6px rgba(0, 82, 255, 0.3);
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Mode Toggle */
+.mode-toggle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mode-btn {
+  padding: 10px 20px;
+  border: 2px solid #e5e9f2;
+  background: transparent;
+  color: #e5e9f2;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #0052ff;
+  color: #0052ff;
+}
+
+.mode-btn.active {
+  background: #0052ff;
+  color: #ffffff;
+  border-color: #0052ff;
+  box-shadow: 0 0 12px rgba(0, 82, 255, 0.6);
+}
+
+/* Status */
+.status {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  font-weight: 600;
+}
+
+.mode-indicator {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mode-indicator.PAPER {
+  background: rgba(100, 150, 255, 0.2);
+  color: #64e4ff;
+  border: 1px solid #64e4ff;
+}
+
+.mode-indicator.LIVE {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4444;
+  border: 1px solid #ff4444;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.pnl {
+  font-size: 14px;
+}
+
+.pnl.positive {
+  color: #00c853;
+}
+
+.pnl.negative {
+  color: #ff4444;
+}
+
+/* Content */
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Settings Panel */
+.settings-panel {
+  background: rgba(0, 82, 255, 0.1);
+  border: 1px solid #0052ff;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.settings-panel h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #0052ff;
+}
+
+.setting {
+  margin-bottom: 20px;
+}
+
+.setting label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.setting input[type="text"],
+.setting input[type="range"],
+.setting select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #0052ff;
+  border-radius: 6px;
+  background: rgba(0, 82, 255, 0.05);
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.setting input[type="text"]:focus,
+.setting input[type="range"]:focus,
+.setting select:focus {
+  outline: none;
+  border-color: #64e4ff;
+  background: rgba(100, 228, 255, 0.1);
+  box-shadow: 0 0 8px rgba(100, 228, 255, 0.3);
+}
+
+.setting select option {
+  background: #0d1b3e;
+  color: #ffffff;
+}
+
+.setting small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #a0a8b8;
+}
+
+.btn-save {
+  padding: 12px 24px;
+  background: #0052ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-save:hover {
+  background: #0052ff;
+  box-shadow: 0 0 16px rgba(0, 82, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Section Headers */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.btn-settings {
+  padding: 10px 20px;
+  background: rgba(0, 82, 255, 0.2);
+  color: #0052ff;
+  border: 1px solid #0052ff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-settings:hover {
+  background: #0052ff;
+  color: #ffffff;
+}
+
+/* Opportunities Section */
+.opportunities-section {
+  margin-bottom: 60px;
+}
+
+.no-opportunities {
+  text-align: center;
+  padding: 60px 20px;
+  background: rgba(0, 82, 255, 0.05);
+  border: 2px dashed #0052ff;
+  border-radius: 12px;
+  color: #a0a8b8;
+  font-size: 16px;
+}
+
+.opportunities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.opportunity-card {
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.1) 0%, rgba(100, 228, 255, 0.05) 100%);
+  border: 1px solid #0052ff;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.opportunity-card:hover {
+  border-color: #64e4ff;
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.2) 0%, rgba(100, 228, 255, 0.1) 100%);
+  box-shadow: 0 0 16px rgba(0, 82, 255, 0.4);
+  transform: translateY(-4px);
+}
+
+.symbol-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 82, 255, 0.3);
+}
+
+.symbol-header h3 {
+  font-size: 20px;
+  color: #0052ff;
+  font-weight: 700;
+}
+
+.expiry {
+  background: rgba(0, 82, 255, 0.2);
+  color: #64e4ff;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.metric {
+  background: rgba(0, 82, 255, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.metric .label {
+  display: block;
+  font-size: 12px;
+  color: #a0a8b8;
+  margin-bottom: 6px;
+}
+
+.metric .value {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.signal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(100, 228, 255, 0.1);
+  border-radius: 6px;
+}
+
+.signal-label {
+  color: #a0a8b8;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.signal-value {
+  color: #64e4ff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.btn-execute {
+  width: 100%;
+  padding: 12px;
+  background: #0052ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-execute:hover {
+  background: #0052ff;
+  box-shadow: 0 0 12px rgba(0, 82, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Positions Section */
+.positions-section {
+  margin-top: 60px;
+}
+
+.no-positions {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0, 82, 255, 0.05);
+  border: 1px dashed #0052ff;
+  border-radius: 12px;
+  color: #a0a8b8;
+  font-size: 14px;
+}
+
+.positions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: linear-gradient(135deg, rgba(0, 82, 255, 0.1) 0%, rgba(100, 228, 255, 0.05) 100%);
+  border: 1px solid #0052ff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.positions-table thead {
+  background: rgba(0, 82, 255, 0.3);
+  border-bottom: 2px solid #0052ff;
+}
+
+.positions-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.positions-table tbody tr {
+  border-bottom: 1px solid rgba(0, 82, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.positions-table tbody tr:hover {
+  background: rgba(0, 82, 255, 0.2);
+}
+
+.positions-table tbody tr.positive {
+  background: rgba(0, 200, 83, 0.05);
+}
+
+.positions-table tbody tr.negative {
+  background: rgba(255, 68, 68, 0.05);
+}
+
+.positions-table td {
+  padding: 12px 15px;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.positions-table td.positive {
+  color: #00c853;
+  font-weight: 600;
+}
+
+.positions-table td.negative {
+  color: #ff4444;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .opportunities-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .status {
+    width: 100%;
+    justify-content: space-around;
+    font-size: 12px;
+  }
+
+  .opportunities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+}
