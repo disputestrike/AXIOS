@@ -137,6 +137,9 @@ export function calculateMetrics() {
   const stdDev = Math.sqrt(variance)
   const sharpe = stdDev === 0 ? 0 : mean / stdDev
 
+  const totalRisk = Math.abs(avgLoss) * losses.length
+  const returnOnRisk = totalRisk === 0 ? 0 : totalPnL / totalRisk
+
   return {
     totalTrades: tradeHistory.length,
     wins: wins.length,
@@ -147,7 +150,8 @@ export function calculateMetrics() {
     profitFactor,
     totalPnL,
     maxDrawdown: maxDD,
-    sharpe
+    sharpe,
+    returnOnRisk
   }
 }
 
