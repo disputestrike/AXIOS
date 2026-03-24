@@ -34,7 +34,15 @@ console.log('═'.repeat(80) + '\n')
 // MOCK DATA (REAL ENGINE WILL HOOK HERE)
 // ============================================================================
 
-let systemState = {
+let systemState: {
+  mode: string
+  symbols: string[]
+  positionSize: number
+  dailyLossLimit: number
+  strategy: string
+  opportunities: Record<string, unknown>[]
+  positions: Record<string, unknown>[]
+} = {
   mode,
   symbols: ['SPX', 'SPY', 'QQQ', 'IWM', 'GLD', 'TLT', 'AAPL', 'MSFT', 'NVDA', 'AMD', 'TSLA'],
   positionSize: 750,

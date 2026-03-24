@@ -9,7 +9,7 @@ import { enrichTrades } from './data-enricher'
 import { scoreTrades } from './trade-scorer'
 import { selectBestStrategies } from './meta-orchestrator'
 import { allocateCapital } from './portfolio-optimizer'
-import { smartExecute } from './execution'
+import { smartExecute, type ExecutionResult } from './execution'
 import { updateModel } from './learning-engine'
 import { logTrade } from './trade-logger'
 import { updateRisk, checkKillSwitch } from './risk-engine'
@@ -71,7 +71,7 @@ export async function runDecisionEngine(ctx: DecisionContext) {
 
     // STEP 6: EXECUTE trades
     console.log('[DECISION] Executing trades...')
-    const results = []
+    const results: ExecutionResult[] = []
 
     for (const trade of allocated) {
       try {

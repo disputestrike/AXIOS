@@ -9,7 +9,7 @@
  * - Error handling
  */
 
-interface ExecutionResult {
+export interface ExecutionResult {
   symbol: string
   strike: number
   expiry: string
@@ -37,7 +37,7 @@ export async function smartExecute(trade: any, ibkr: any): Promise<ExecutionResu
   let price = (trade.bid + trade.ask) / 2
 
   const maxRetries = 3
-  let lastError = null
+  let lastError: Error | unknown = null
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
@@ -89,7 +89,7 @@ export async function smartExecute(trade: any, ibkr: any): Promise<ExecutionResu
     expiry,
     type,
     filled: false,
-    error: lastError?.message || 'Max retries exceeded'
+    error: lastError instanceof Error ? lastError.message : 'Max retries exceeded'
   }
 }
 
